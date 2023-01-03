@@ -1,15 +1,11 @@
-import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import Badge, { BadgeProps } from "@mui/material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
@@ -17,14 +13,22 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+import { MenuItem } from "@mui/material";
+
+const StyledBadge = styled(Badge)<BadgeProps>(() => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: -2,
+    padding: "0 4px",
+  },
+}));
 
 export default function NavBar() {
   const favList = useSelector((state: RootState) => state.country.favorite);
 
-
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position:"fixed" ,width:"100%",zIndex:"100"}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -36,25 +40,33 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            <Link to="/">Country</Link>
-          </Typography>
+          <MenuItem component={Link} to={"/"}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
+              Home
+            </Typography>
+          </MenuItem>
+          <MenuItem component={Link} to={"/countries"}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
+              Country List
+            </Typography>
+          </MenuItem>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={favList.length} color="error">
+            <MenuItem component={Link} to={"/favorites"}>
+              <StyledBadge badgeContent={favList.length} color="error">
                 <FavoriteIcon />
-              </Badge>
-            </IconButton>
+              </StyledBadge>
+            </MenuItem>
             {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"

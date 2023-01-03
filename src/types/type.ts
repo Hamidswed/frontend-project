@@ -8,4 +8,5 @@ export type CountryType = {
   flags: {
     svg: string;
   };
+  capital:string[]
 };

@@ -10,11 +10,15 @@ import {
   Alert,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import Tooltip from "@mui/material/Tooltip";
 import { CountryType } from "../../types/type";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import { actions } from "../../redux/slice/country";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { MenuItem } from "@mui/material";
 
 type PropType = {
   country: CountryType;
@@ -39,13 +43,13 @@ const CountryItem = ({ country }: PropType) => {
   };
   const favoriteClickHandler = () => {
     setFavoriteClick(!favoritClick);
-    if (favoritClick){
-      dispatch(actions.removeFromFav(country.name.common))
-      setFavoriteClick(!favoritClick)
-    }else{
-      dispatch(actions.addToFav(country))
-      handleClick()
-      setFavoriteClick(!favoritClick)
+    if (favoritClick) {
+      dispatch(actions.removeFromFav(country.name.common));
+      setFavoriteClick(!favoritClick);
+    } else {
+      dispatch(actions.addToFav(country));
+      handleClick();
+      setFavoriteClick(!favoritClick);
     }
   };
   return (
@@ -83,12 +87,22 @@ const CountryItem = ({ country }: PropType) => {
             )}
           </TableCell>
           <TableCell align="center">
-            <IconButton
-              aria-label="add to favorites"
-              onClick={favoriteClickHandler}
-            >
-              <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />
-            </IconButton>
+            <Tooltip title="Add to favorite list">
+              <IconButton
+                aria-label="add to favorites"
+                onClick={favoriteClickHandler}
+              >
+                <FavoriteIcon sx={{ color: favoritClick ? "red" : "gray" }} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="More information">
+              <MenuItem
+                component={Link}
+                to={`/countries/${country.name.common}`}
+              >
+                <MoreHorizIcon />
+              </MenuItem>
+            </Tooltip>
             <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
               <Alert
                 onClose={handleClose}
