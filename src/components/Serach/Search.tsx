@@ -5,7 +5,7 @@ import { useState } from "react";
 import { actions } from "./../../redux/slice/country";
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const [userInput, setUserInput] = useState("");
 
   const dispatch = useDispatch();
   const countriesList = useSelector(
@@ -13,18 +13,18 @@ const Search = () => {
   );
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    setUserInput(e.target.value);
     searchHandler();
   };
 
   const searchHandler = () => {
     const result = countriesList.filter((country) =>
-      country.name.common.toLowerCase().includes(searchInput.toLowerCase())
+      country.name.common.toLowerCase().includes(userInput.toLowerCase())
     );
     console.log(result, "result");
     dispatch(actions.getCountryData(result));
   };
-  console.log(searchInput);
+  console.log(userInput);
   return (
     <div>
       <TextField
