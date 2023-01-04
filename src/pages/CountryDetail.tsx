@@ -15,6 +15,10 @@ const CountryDetail = () => {
       svg: "",
     },
     capital: [],
+    maps: {
+      googleMaps: "",
+    },
+    favorite: false,
   });
   const { name } = useParams();
 
@@ -33,7 +37,7 @@ const CountryDetail = () => {
     cachedFetch();
   }, [cachedFetch]);
   return (
-    <div style={{display:"flex",justifyContent:"center"}}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <CountryDetailItem countryDetail={countryDetail} />
     </div>
   );

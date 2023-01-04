@@ -1,12 +1,16 @@
 export type CountryType = {
+  flags: {
+    svg: string;
+  };
   name: {
     common: string;
   };
   region: string;
   population: number;
   languages: object;
-  flags: {
-    svg: string;
+  favorite: boolean;
+  capital: string[];
+  maps: {
+    googleMaps: string;
   };
-  capital:string[]
 };

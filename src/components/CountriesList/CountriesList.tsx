@@ -17,6 +17,22 @@ import {
 type PropType = {
   userInput: string;
 };
+
+// function createData(
+//   name: {
+//     common: string;
+//   },
+//   region: string,
+//   population: number,
+//   languages: object,
+//   flags: {
+//     svg: string;
+//   },
+//   favorite: boolean
+// ) {
+//   return { name, region, population, languages, flags, favorite };
+// }
+
 const CountriesList = ({ userInput }: PropType) => {
   const countriesList = useSelector(
     (state: RootState) => state.country.countries
@@ -27,6 +43,17 @@ const CountriesList = ({ userInput }: PropType) => {
       dispatch(fetchCountryData());
     }
   }, [dispatch, userInput]);
+
+  // const row = countriesList.map((country) =>
+  //   createData(
+  //     country.flags,
+  //     country.name,
+  //     country.region,
+  //     country.population,
+  //     country.languages,
+  //     country.favorite
+  //   )
+  // );
 
   const tableTilte = [
     "Flag",
