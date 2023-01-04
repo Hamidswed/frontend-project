@@ -19,12 +19,12 @@ type PropType = {
 const FavoriteItem = ({ favCountry }: PropType) => {
   const dispatch = useDispatch();
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="favorite-item">
       <List
         sx={{
           width: "100%",
           maxWidth: 360,
-          bgcolor: "background.paper",
+          bgcolor: "none",
           position: "relative",
         }}
       >

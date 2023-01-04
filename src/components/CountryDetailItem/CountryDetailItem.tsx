@@ -14,9 +14,12 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Link from "@mui/material/Link";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { Link as RouterLink } from "react-router-dom";
 import { CountryType } from "../../types/type";
-import { List, ListItem } from "@mui/material";
+import { List, ListItem, Tooltip } from "@mui/material";
 
 type PropType = {
   countryDetail: CountryType;
@@ -75,12 +78,24 @@ const CountryDetailItem = ({ countryDetail }: PropType) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
+        <Tooltip title="Back">
+          <RouterLink to="/countries">
+            <IconButton>
+              <ArrowBackIosIcon />
+            </IconButton>
+          </RouterLink>
+          </Tooltip>
+          <Tooltip title="Google Map">
+          <Link
+            href={countryDetail.maps.googleMaps}
+            underline="none"
+            target="blank"
+          >
+            <IconButton>
+              <LocationOnIcon />
+            </IconButton>
+          </Link>
+          </Tooltip>
         </CardActions>
       </Card>
     </div>

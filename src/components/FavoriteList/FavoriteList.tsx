@@ -7,8 +7,7 @@ const FavoriteList = () => {
   console.log(favList, "fav");
 
   return (
-    <div style={{ textAlign: "center", margin: "50px auto" }}>
-      <h2>Favorite List</h2>
+    <div className="favorite-list">
       {favList.length === 0 ? (
         <p>There is no country in your favorite list.</p>
       ) : (

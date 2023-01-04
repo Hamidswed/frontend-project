@@ -28,8 +28,8 @@ export default function NavBar() {
   const favList = useSelector((state: RootState) => state.country.favorite);
 
   return (
-    <Box sx={{ flexGrow: 1, position:"fixed" ,width:"100%",zIndex:"100"}}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, position: "fixed", width: "100%", zIndex: "100" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#474747" }}>
         <Toolbar>
           <IconButton
             size="large"

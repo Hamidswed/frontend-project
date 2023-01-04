@@ -37,7 +37,7 @@ const Search = ({ userInput, setUserInput }: PropType) => {
       <ThemeProvider theme={theme}>
         <TextField
           id="standard-basic"
-          label="Standard"
+          label="Search country"
           variant="standard"
           onChange={inputHandler}
           InputLabelProps={{

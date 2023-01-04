@@ -54,9 +54,6 @@ function createData(
 }
 
 export default function CountriesListTest({ userInput }: PropType) {
-  const [favoritClick, setFavoriteClick] = useState(false);
-  const [open, setOpen] = useState(false);
-
   const countriesList = useSelector(
     (state: RootState) => state.country.countries
   );
@@ -67,32 +64,6 @@ export default function CountriesListTest({ userInput }: PropType) {
     }
   }, [dispatch, userInput]);
 
-  const dispatchNormal = useDispatch();
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-  const favoriteClickHandler = (country: CountryType) => {
-    setFavoriteClick(!favoritClick);
-    if (favoritClick) {
-      dispatchNormal(actions.removeFromFav(country.name.common));
-      setFavoriteClick(!favoritClick);
-    } else {
-      dispatchNormal(actions.addToFav(country));
-      handleClick();
-      setFavoriteClick(!favoritClick);
-    }
-  };
   const theme = createTheme({
     typography: {
       fontFamily: ['"Rajdhani"', "sans-serif"].join(","),
@@ -138,83 +109,6 @@ export default function CountriesListTest({ userInput }: PropType) {
             <CountryItemTest key={crypto.randomUUID()} country={country} />
           );
         })}
-
-        {/* <TableBody>
-          {countryRows.map((row) => (
-            <TableRow
-              key={crypto.randomUUID()}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row" align="center">
-                <img
-                  src={row.flags.svg}
-                  alt={row.name.common}
-                  style={{ width: "100px" }}
-                />
-              </TableCell>
-              <TableCell align="center">{row.name.common}</TableCell>
-              <TableCell align="center">{row.region}</TableCell>
-              <TableCell align="center">{row.population}</TableCell>
-              <TableCell align="center">
-                {row.languages && (
-                  <ul
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    {Object.keys(row.languages).map((item, index) => {
-                      return (
-                        <li key={crypto.randomUUID()}>
-                          <span>
-                            {item}: {Object.values(row.languages)[index]}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </TableCell>
-              <TableCell align="center">
-                <Tooltip title="Add to favorite list">
-                  <IconButton
-                    aria-label="add to favorites"
-                    onClick={() => favoriteClickHandler(row)}
-                  >
-                    <FavoriteIcon
-                      sx={{ color: favoritClick ? "red" : "gray" }}
-                    />
-                  </IconButton>
-                </Tooltip>
-              </TableCell>
-              <TableCell align="center">
-                <Tooltip title="More information">
-                  <MenuItem
-                    sx={{ display: "flex", justifyContent: "center" }}
-                    component={Link}
-                    to={`/countries/${row.name.common}`}
-                  >
-                    <MoreHorizIcon />
-                  </MenuItem>
-                </Tooltip>
-              </TableCell>
-              <Snackbar
-                open={open}
-                autoHideDuration={3000}
-                onClose={handleClose}
-              >
-                <Alert
-                  onClose={handleClose}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  {row.name.common} add to favorite list!
-                </Alert>
-              </Snackbar>
-            </TableRow>
-          ))}
-        </TableBody> */}
       </Table>
     </TableContainer>
   );

@@ -7,36 +7,52 @@
 .App {
   text-align: center;
   padding: 100px 100px;
+  background-image: url("./assets/favoritePage.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.home-page{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  margin-top: 50px;
+  height: 100vh;
+  position: relative;
+}
+.home-page :first-child{
+  width: 25%;
+  z-index: 2;
+}
+.home-page :nth-child(2){
+  width: 20%;
+  position: absolute;
+  top:150px;
+  right:400px;
+  z-index: 10;
+}
+.home-page :nth-child(3){
+  width: 20%;
+  position: absolute;
+  top:50px;
+  left:370px;
+  z-index: 0;
 }
 
-
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.favorite-page{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
 }
-
-.App-link {
-  color: #61dafb;
+.favorite-item{
+display: flex;
+justify-content: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.countries-page {
+  display: flex;
+  flex-direction: column;
+}
+.countries-page :first-child{
+  align-self: flex-start;
+}

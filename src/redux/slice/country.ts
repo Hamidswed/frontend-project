@@ -39,9 +39,9 @@ const countrySlice = createSlice({
     //     (item) => item.name.common === action.payload.name.common
     //   );
     //   if (favIndex === -1) {
-    //     state.isFavorite = false;
+    //     action.payload.favorite = false;
     //   } else {
-    //     state.isFavorite = true;
+    //     action.payload.favorite = true;
     //   }
     // },
   },
