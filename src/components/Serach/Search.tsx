@@ -1,17 +1,25 @@
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
-import { useState } from "react";
 import { actions } from "./../../redux/slice/country";
+import { createTheme, ThemeProvider } from "@mui/material";
 
-const Search = () => {
-  const [userInput, setUserInput] = useState("");
+type PropType = {
+  userInput: string;
+  setUserInput: React.Dispatch<React.SetStateAction<string>>;
+};
 
+const Search = ({ userInput, setUserInput }: PropType) => {
   const dispatch = useDispatch();
   const countriesList = useSelector(
     (state: RootState) => state.country.countries
   );
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: ['"Rajdhani"', "sans-serif"].join(","),
+    },
+  });
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
     searchHandler();
@@ -21,18 +29,22 @@ const Search = () => {
     const result = countriesList.filter((country) =>
       country.name.common.toLowerCase().includes(userInput.toLowerCase())
     );
-    console.log(result, "result");
     dispatch(actions.getCountryData(result));
   };
-  console.log(userInput);
+
   return (
     <div>
-      <TextField
-        id="standard-basic"
-        label="Standard"
-        variant="standard"
-        onChange={inputHandler}
-      />
+      <ThemeProvider theme={theme}>
+        <TextField
+          id="standard-basic"
+          label="Standard"
+          variant="standard"
+          onChange={inputHandler}
+          InputLabelProps={{
+            style: { fontFamily: "'Nunito', sans-serif" },
+          }}
+        />
+      </ThemeProvider>
     </div>
   );
 };

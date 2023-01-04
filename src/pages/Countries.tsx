@@ -1,13 +1,14 @@
 import CountriesList from "../components/CountriesList/CountriesList"
 import Search from "../components/Serach/Search"
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Countries=()=>{
+  const [userInput, setUserInput] = useState("");
+
   return <div>
-    <Search/>
-    <Link to="/favorites"><button>favorite</button></Link>
-    <CountriesList/>
+    <Search userInput={userInput} setUserInput={setUserInput}/>
+    <CountriesList userInput={userInput}/>
   </div>
 }
 

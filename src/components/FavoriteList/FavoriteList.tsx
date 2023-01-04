@@ -7,13 +7,17 @@ const FavoriteList = () => {
   console.log(favList, "fav");
 
   return (
-    <div style={{ textAlign: "center", margin:"50px auto"}}>
+    <div style={{ textAlign: "center", margin: "50px auto" }}>
       <h2>Favorite List</h2>
-      {favList.map((favCountry) => {
-        return (
-          <FavoriteItem key={crypto.randomUUID()} favCountry={favCountry} />
-        );
-      })}
+      {favList.length === 0 ? (
+        <p>There is no country in your favorite list.</p>
+      ) : (
+        favList.map((favCountry) => {
+          return (
+            <FavoriteItem key={crypto.randomUUID()} favCountry={favCountry} />
+          );
+        })
+      )}
     </div>
   );
 };

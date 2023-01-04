@@ -14,14 +14,19 @@ import {
   TableHead,
 } from "@mui/material";
 
-const CountriesList = () => {
+type PropType = {
+  userInput: string;
+};
+const CountriesList = ({ userInput }: PropType) => {
   const countriesList = useSelector(
     (state: RootState) => state.country.countries
   );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(fetchCountryData());
-  }, [dispatch]);
+    if (userInput === "") {
+      dispatch(fetchCountryData());
+    }
+  }, [dispatch, userInput]);
 
   const tableTilte = [
     "Flag",
@@ -31,6 +36,7 @@ const CountriesList = () => {
     "Languages",
     "Favorite",
   ];
+
   return (
     <div style={{ margin: "50px 200px" }}>
       <TableContainer component={Paper}>

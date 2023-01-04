@@ -34,14 +34,14 @@ const countrySlice = createSlice({
       );
       state.favorite = updatedFav;
     },
-    // checkIsFavorite: (state, action) => {
+    // checkIsFavorite: (state, action:PayloadAction<CountryType>) => {
     //   const favIndex = state.favorite.findIndex(
     //     (item) => item.name.common === action.payload.name.common
     //   );
     //   if (favIndex === -1) {
-    //     return false;
+    //     state.isFavorite = false;
     //   } else {
-    //     return true;
+    //     state.isFavorite = true;
     //   }
     // },
   },
