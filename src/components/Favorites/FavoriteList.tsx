@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import FavoriteItem from "../FavoriteItem/FavoriteItem";
+import FavoriteItem from "./FavoriteItem";
 
 const FavoriteList = () => {
   const favList = useSelector((state: RootState) => state.country.favorite);

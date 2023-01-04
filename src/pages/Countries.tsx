@@ -1,6 +1,6 @@
 import Search from "../components/Serach/Search";
 import { useState } from "react";
-import CountriesListTest from "../components/CountriesList/CountriesListTest";
+import CountriesList from "../components/Countries/CountriesList";
 
 const Countries = () => {
   const [userInput, setUserInput] = useState("");
@@ -8,7 +8,7 @@ const Countries = () => {
   return (
     <div className="countries-page">
       <Search userInput={userInput} setUserInput={setUserInput} />
-      <CountriesListTest userInput={userInput}/>
+      <CountriesList userInput={userInput}/>
     </div>
   );
 };

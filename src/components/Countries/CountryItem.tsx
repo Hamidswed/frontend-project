@@ -8,7 +8,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Snackbar, Alert } from "@mui/material";
 
 import { useSelector, useDispatch } from "react-redux";
-import {  useState } from "react";
+import { useState } from "react";
 import { RootState } from "../../redux/store";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ type PropType = {
   country: CountryType;
 };
 
-const CountryItemTest = ({ country }: PropType) => {
+const CountryItem = ({ country }: PropType) => {
   const favoriteState = useSelector(
     (state: RootState) => state.country.favorite
   );
@@ -52,7 +52,7 @@ const CountryItemTest = ({ country }: PropType) => {
   };
 
   return (
-    <TableBody>
+    <TableBody className="country-item">
       <TableRow
         key={crypto.randomUUID()}
         sx={{
@@ -73,18 +73,12 @@ const CountryItemTest = ({ country }: PropType) => {
         <TableCell align="center">{country.population}</TableCell>
         <TableCell align="center">
           {country.languages && (
-            <ul
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
+            <ul>
               {Object.keys(country.languages).map((item, index) => {
                 return (
                   <li key={crypto.randomUUID()}>
                     <span>
-                      {item}: {Object.values(country.languages)[index]}
+                      {item}: <em>{Object.values(country.languages)[index]}</em>
                     </span>
                   </li>
                 );
@@ -110,7 +104,7 @@ const CountryItemTest = ({ country }: PropType) => {
               </IconButton>
             </Link>
           </Tooltip>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
             <Alert
               onClose={handleClose}
               severity="success"
@@ -124,4 +118,4 @@ const CountryItemTest = ({ country }: PropType) => {
     </TableBody>
   );
 };
-export default CountryItemTest;
+export default CountryItem;

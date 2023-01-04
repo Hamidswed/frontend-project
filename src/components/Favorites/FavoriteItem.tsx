@@ -11,7 +11,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { CountryType } from "../../types/type";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "./../../redux/slice/country";
+import { actions } from "../../redux/slice/country";
 
 type PropType = {
   favCountry: CountryType;

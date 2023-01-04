@@ -1,25 +1,16 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Tooltip from "@mui/material/Tooltip";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Snackbar, Alert } from "@mui/material";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../redux/store";
 import fetchCountryData from "../../redux/thunk/country";
-import { createTheme, IconButton, MenuItem } from "@mui/material";
-import { Link } from "react-router-dom";
-import { actions } from "../../redux/slice/country";
-import { CountryType } from "../../types/type";
-import CountryItemTest from "./../CountryItem/CountryItemTest";
+import { createTheme } from "@mui/material";
+import CountryItem from "./CountryItem";
 
 type PropType = {
   userInput: string;
@@ -53,7 +44,7 @@ function createData(
   };
 }
 
-export default function CountriesListTest({ userInput }: PropType) {
+export default function CountriesList({ userInput }: PropType) {
   const countriesList = useSelector(
     (state: RootState) => state.country.countries
   );
@@ -105,9 +96,7 @@ export default function CountriesListTest({ userInput }: PropType) {
           </TableRow>
         </TableHead>
         {countryRows.map((country) => {
-          return (
-            <CountryItemTest key={crypto.randomUUID()} country={country} />
-          );
+          return <CountryItem key={crypto.randomUUID()} country={country} />;
         })}
       </Table>
     </TableContainer>

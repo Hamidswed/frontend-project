@@ -1,4 +1,4 @@
-import FavoriteList from "../components/FavoriteList/FavoriteList";
+import FavoriteList from "../components/Favorites/FavoriteList";
 
 const Favorites = () => {
   return (

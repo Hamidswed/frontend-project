@@ -34,16 +34,6 @@ const countrySlice = createSlice({
       );
       state.favorite = updatedFav;
     },
-    // checkIsFavorite: (state, action:PayloadAction<CountryType>) => {
-    //   const favIndex = state.favorite.findIndex(
-    //     (item) => item.name.common === action.payload.name.common
-    //   );
-    //   if (favIndex === -1) {
-    //     action.payload.favorite = false;
-    //   } else {
-    //     action.payload.favorite = true;
-    //   }
-    // },
   },
 });
 
