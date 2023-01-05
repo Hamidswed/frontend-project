@@ -57,7 +57,7 @@ export default function NavBar() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              Country List
+              Country list
             </Typography>
           </MenuItem>
           <Box sx={{ flexGrow: 1 }} />
@@ -67,15 +67,6 @@ export default function NavBar() {
                 <FavoriteIcon />
               </StyledBadge>
             </MenuItem>
-            {/* <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size="large"
               edge="end"

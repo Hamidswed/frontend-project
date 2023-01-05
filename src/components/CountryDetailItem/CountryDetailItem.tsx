@@ -31,12 +31,13 @@ const CountryDetailItem = ({ countryDetail }: PropType) => {
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="country">
               {countryDetail.name.common.charAt(0).toUpperCase()}
             </Avatar>
           }
           title={countryDetail.name.common}
           subheader={countryDetail.capital[0]}
+          sx={{ textAlign: "left" }}
         />
         <CardMedia
           component="img"
@@ -78,23 +79,23 @@ const CountryDetailItem = ({ countryDetail }: PropType) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-        <Tooltip title="Back">
-          <RouterLink to="/countries">
-            <IconButton>
-              <ArrowBackIosIcon />
-            </IconButton>
-          </RouterLink>
+          <Tooltip title="Back">
+            <RouterLink to="/countries">
+              <IconButton>
+                <ArrowBackIosIcon />
+              </IconButton>
+            </RouterLink>
           </Tooltip>
           <Tooltip title="Google Map">
-          <Link
-            href={countryDetail.maps.googleMaps}
-            underline="none"
-            target="blank"
-          >
-            <IconButton>
-              <LocationOnIcon />
-            </IconButton>
-          </Link>
+            <Link
+              href={countryDetail.maps.googleMaps}
+              underline="none"
+              target="blank"
+            >
+              <IconButton>
+                <LocationOnIcon />
+              </IconButton>
+            </Link>
           </Tooltip>
         </CardActions>
       </Card>

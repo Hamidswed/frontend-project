@@ -11,6 +11,9 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.novbar-menu :hover{
+  color: orange;
+}
 .home-page{
   display: flex;
   flex-direction: column;

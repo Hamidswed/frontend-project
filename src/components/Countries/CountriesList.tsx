@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../redux/store";
 import fetchCountryData from "../../redux/thunk/country";
-import { createTheme } from "@mui/material";
 import CountryItem from "./CountryItem";
 
 type PropType = {
@@ -55,11 +54,6 @@ export default function CountriesList({ userInput }: PropType) {
     }
   }, [dispatch, userInput]);
 
-  const theme = createTheme({
-    typography: {
-      fontFamily: ['"Rajdhani"', "sans-serif"].join(","),
-    },
-  });
   const tableHeader = [
     "Flag",
     "Name",
@@ -84,29 +78,31 @@ export default function CountriesList({ userInput }: PropType) {
   });
 
   return (
-    <div>
-      {countriesList.length === 0 && (
-        <div>
-          <i className="fas fa-spinner fa-spin fa-xl" />
-          <p style={{marginTop:"10px"}}>Loading...</p>
-        </div>
-      )}
-      <TableContainer component={Paper} style={{ marginTop: "50px" }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              {tableHeader.map((title) => (
-                <TableCell align="center" key={crypto.randomUUID()}>
-                  <strong>{title}</strong>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          {countryRows.map((country) => {
-            return <CountryItem key={crypto.randomUUID()} country={country} />;
-          })}
-        </Table>
-      </TableContainer>
-    </div>
+      <div>
+        {countriesList.length === 0 && (
+          <div>
+            <i className="fas fa-spinner fa-spin fa-xl" />
+            <p style={{ marginTop: "10px" }}>Loading...</p>
+          </div>
+        )}
+        <TableContainer component={Paper} style={{ marginTop: "50px" }}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                {tableHeader.map((title) => (
+                  <TableCell align="center" key={crypto.randomUUID()}>
+                    <strong>{title}</strong>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            {countryRows.map((country) => {
+              return (
+                <CountryItem key={crypto.randomUUID()} country={country} />
+              );
+            })}
+          </Table>
+        </TableContainer>
+      </div>
   );
 }

@@ -8,17 +8,17 @@ import CountryDetail from "./pages/CountryDetail";
 
 function App() {
   return (
-    <div >
-      <NavBar />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/countries" element={<Countries />} />
-          <Route path="/countries/:name" element={<CountryDetail />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
+      <div>
+        <NavBar />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/countries" element={<Countries />} />
+            <Route path="/countries/:name" element={<CountryDetail />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+        </div>
       </div>
-    </div>
   );
 }
 
