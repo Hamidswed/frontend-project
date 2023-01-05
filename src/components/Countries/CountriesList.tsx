@@ -1,19 +1,24 @@
-import Table from "@mui/material/Table";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { RootState, AppDispatch } from "../../redux/store";
-import fetchCountryData from "../../redux/thunk/country";
+import { useSelector, useDispatch } from "react-redux";
+
 import CountryItem from "./CountryItem";
+import { CountryType } from "../../types/type";
 import { actions } from "./../../redux/slice/country";
-import { IconButton, Tooltip } from "@mui/material";
+import fetchCountryData from "../../redux/thunk/country";
+import { RootState, AppDispatch } from "../../redux/store";
 
 type PropType = {
   userInput: string;
@@ -34,7 +39,7 @@ function createData(
   maps: {
     googleMaps: string;
   }
-) {
+): CountryType {
   return {
     flags,
     name,
@@ -59,16 +64,6 @@ export default function CountriesList({ userInput }: PropType) {
       dispatch(fetchCountryData());
     }
   }, [dispatch, userInput]);
-
-  const tableHeader = [
-    "Flag",
-    "Name",
-    "Region",
-    "Population",
-    "Languages",
-    "Favorite",
-    "More",
-  ];
 
   const countryRows = countriesList.slice(0, 20).map((country) => {
     return createData(

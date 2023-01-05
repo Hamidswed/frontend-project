@@ -1,19 +1,22 @@
-import * as React from "react";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import Tooltip from "@mui/material/Tooltip";
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Tooltip,
+  Snackbar,
+  Alert,
+  IconButton,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Snackbar, Alert } from "@mui/material";
 
-import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { RootState } from "../../redux/store";
-import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import { actions } from "../../redux/slice/country";
+import { useSelector, useDispatch } from "react-redux";
+
+import { RootState } from "../../redux/store";
 import { CountryType } from "../../types/type";
+import { actions } from "../../redux/slice/country";
 
 type PropType = {
   country: CountryType;
@@ -26,9 +29,9 @@ const CountryItem = ({ country }: PropType) => {
   const favoriteResult = favoriteState.some(
     (item) => item.name.common === country.name.common
   );
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
+  const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
   };
@@ -39,9 +42,9 @@ const CountryItem = ({ country }: PropType) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
+
   const favoriteClickHandler = () => {
     if (favoriteResult) {
       dispatch(actions.removeFromFav(country.name.common));
@@ -63,11 +66,7 @@ const CountryItem = ({ country }: PropType) => {
         }}
       >
         <TableCell component="th" scope="row" align="center">
-          <img
-            src={country.flags.svg}
-            alt={country.name.common}
-            style={{ width: "100px" }}
-          />
+          <img src={country.flags.svg} alt={country.name.common} />
         </TableCell>
         <TableCell align="center">{country.name.common}</TableCell>
         <TableCell align="center">{country.region}</TableCell>

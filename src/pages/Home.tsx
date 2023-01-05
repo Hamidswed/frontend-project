@@ -1,7 +1,8 @@
-import EarthGif from "../assets/Rotating_earth.gif";
+import { Button } from "@mui/material";
+
 import Cloud from "../assets/cloud.png";
 import CloudBack from "../assets/cloud2.png";
-import { Button } from "@mui/material";
+import EarthGif from "../assets/Rotating_earth.gif";
 
 const Home = () => {
   return (

@@ -11,16 +11,15 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-.novbar-menu :hover{
-  color: orange;
-}
+
+/* -------------------- Home Style -------------------- */
+
 .home-page{
   display: flex;
   flex-direction: column;
   gap: 40px;
   align-items: center;
   margin-top: 50px;
-  height: 100vh;
   position: relative;
 }
 .home-page :first-child{
@@ -42,8 +41,10 @@
   z-index: 0;
 }
 
+/* -------------------- Favorite Style -------------------- */
+
 .favorite-page{
-  min-height: 100vh;
+  min-height: 56vh;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -52,6 +53,9 @@
 display: flex;
 justify-content: center;
 }
+
+/* -------------------- Country Style -------------------- */
+
 .countries-page {
   display: flex;
   flex-direction: column;
@@ -59,6 +63,10 @@ justify-content: center;
 }
 .countries-page :nth-child(2){
   align-self: flex-start;
+}
+.country-item img{
+  width: 100px;
+  border: 1px solid lightgray;
 }
 .country-item ul{
   display: "flex";

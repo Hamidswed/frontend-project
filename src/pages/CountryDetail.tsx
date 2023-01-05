@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import CountryDetailItem from "../components/CountryDetailItem/CountryDetailItem";
 import { useCallback, useEffect, useState } from "react";
+
 import { CountryType } from "../types/type";
+import CountryDetailItem from "../components/CountryDetailItem/CountryDetailItem";
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState<CountryType>({
@@ -21,8 +22,6 @@ const CountryDetail = () => {
     favorite: false,
   });
   const { name } = useParams();
-
-  console.log(name, "use param");
   const url = `https://restcountries.com/v3.1/name/${name}`.replace(
     / /g,
     "%20"

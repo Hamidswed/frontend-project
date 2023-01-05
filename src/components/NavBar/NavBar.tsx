@@ -1,20 +1,22 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Badge, { BadgeProps } from "@mui/material/Badge";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Badge,
+  BadgeProps,
+  MenuItem,
+} from "@mui/material";
+import styled from "@emotion/styled";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
-import { MenuItem } from "@mui/material";
+import { useSelector } from "react-redux";
+
+import { RootState } from "../../redux/store";
 
 const StyledBadge = styled(Badge)<BadgeProps>(() => ({
   "& .MuiBadge-badge": {
@@ -75,16 +77,6 @@ export default function NavBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <MoreIcon />
             </IconButton>
           </Box>
         </Toolbar>
