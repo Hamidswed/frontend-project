@@ -59,6 +59,7 @@ const CountryItem = ({ country }: PropType) => {
           "&:last-child td, &:last-child th": {
             borderBottom: "1px solid lightgrey",
           },
+          bgColor:"none"
         }}
       >
         <TableCell component="th" scope="row" align="center">

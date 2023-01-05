@@ -84,21 +84,29 @@ export default function CountriesList({ userInput }: PropType) {
   });
 
   return (
-    <TableContainer component={Paper} style={{ marginTop: "50px" }}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {tableHeader.map((title) => (
-              <TableCell align="center" key={crypto.randomUUID()}>
-                <strong>{title}</strong>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        {countryRows.map((country) => {
-          return <CountryItem key={crypto.randomUUID()} country={country} />;
-        })}
-      </Table>
-    </TableContainer>
+    <div>
+      {countriesList.length === 0 && (
+        <div>
+          <i className="fas fa-spinner fa-spin fa-xl" />
+          <p style={{marginTop:"10px"}}>Loading...</p>
+        </div>
+      )}
+      <TableContainer component={Paper} style={{ marginTop: "50px" }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              {tableHeader.map((title) => (
+                <TableCell align="center" key={crypto.randomUUID()}>
+                  <strong>{title}</strong>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          {countryRows.map((country) => {
+            return <CountryItem key={crypto.randomUUID()} country={country} />;
+          })}
+        </Table>
+      </TableContainer>
+    </div>
   );
 }

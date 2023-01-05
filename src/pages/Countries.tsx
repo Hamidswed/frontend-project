@@ -7,6 +7,7 @@ const Countries = () => {
 
   return (
     <div className="countries-page">
+      <h2>Country List</h2>
       <Search userInput={userInput} setUserInput={setUserInput} />
       <CountriesList userInput={userInput}/>
     </div>
