@@ -5,7 +5,6 @@ import FavoriteItem from "./FavoriteItem";
 
 const FavoriteList = () => {
   const favList = useSelector((state: RootState) => state.country.favorite);
-  console.log(favList, "fav");
 
   return (
     <div className="favorite-list">

@@ -7,10 +7,12 @@ import {
   Avatar,
   Typography,
   IconButton,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { CountryType } from "../../types/type";
@@ -21,6 +23,26 @@ type PropType = {
 };
 const FavoriteItem = ({ favCountry }: PropType) => {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const removeFromFavorite = () => {
+    dispatch(actions.removeFromFav(favCountry.name.common));
+    handleClick();
+  };
+  console.log(open);
   return (
     <div className="favorite-item">
       <List
@@ -65,14 +87,17 @@ const FavoriteItem = ({ favCountry }: PropType) => {
         </ListItem>
         <IconButton
           sx={{ position: "absolute", right: 0, bottom: 20 }}
-          onClick={() =>
-            dispatch(actions.removeFromFav(favCountry.name.common))
-          }
+          onClick={removeFromFavorite}
         >
           <DeleteForeverIcon color="error" />
         </IconButton>
         <Divider variant="inset" component="li" />
       </List>
+      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          {favCountry.name.common} remove from favorite list!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
