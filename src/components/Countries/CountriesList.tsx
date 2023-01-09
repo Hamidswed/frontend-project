@@ -115,7 +115,7 @@ export default function CountriesList({ userInput }: PropType) {
       {countriesList.length === 0 && (
         <div>
           <i className="fas fa-spinner fa-spin fa-xl" />
-          <p style={{ marginTop: "10px" }}>Loading...</p>
+          <p style={{ marginTop: "10px" }}>Please Wait...</p>
         </div>
       )}
       <TableContainer component={Paper} style={{ marginTop: "50px" }}>

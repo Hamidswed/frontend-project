@@ -1,43 +1,33 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
 
-import { CountryType } from "../types/type";
+import fetchCountryDetailData from "../redux/thunk/countryDetial";
 import CountryDetailItem from "../components/CountryDetailItem/CountryDetailItem";
 
 const CountryDetail = () => {
-  const [countryDetail, setCountryDetail] = useState<CountryType>({
-    name: {
-      common: "",
-    },
-    region: "",
-    population: 0,
-    languages: {},
-    flags: {
-      svg: "",
-    },
-    capital: [],
-    maps: {
-      googleMaps: "",
-    },
-    favorite: false,
-  });
   const { name } = useParams();
-  const url = `https://restcountries.com/v3.1/name/${name}`.replace(
-    / /g,
-    "%20"
+
+  const countryDetail = useSelector(
+    (state: RootState) => state.country.countries
   );
-  const getCountryData = () => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setCountryDetail(data[0]));
-  };
-  const cachedFetch = useCallback(getCountryData, [url]);
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    cachedFetch();
-  }, [cachedFetch]);
+    dispatch(fetchCountryDetailData(name));
+  }, [dispatch, name]);
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <CountryDetailItem countryDetail={countryDetail} />
+      {countryDetail.length !== 0 ? (
+        <CountryDetailItem countryDetail={countryDetail[0]} />
+      ) : (
+        <div>
+          <i className="fas fa-spinner fa-spin fa-xl" />
+          <p style={{ marginTop: "10px" }}>Please wait...</p>
+        </div>
+      )}
     </div>
   );
 };
